@@ -27,7 +27,7 @@
 #include <dht.h>
 #endif
 
-//#include <example_service_1.h>
+#include <example_service_1.h>
 
 #include "leds.h"
 
@@ -50,7 +50,8 @@ int main(void)
     printf("You are running RIOT on a(n) %s board.\n", RIOT_BOARD);
     printf("This board features a(n) %s MCU.\n", RIOT_MCU);
 
-    //example_service_1_routine();
+    example_service_1_routine();
+    
 /*
 #ifdef MODULE_DHT
     dht_t dht_dev1;

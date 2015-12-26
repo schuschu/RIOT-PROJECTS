@@ -33,7 +33,7 @@ QUIET ?= 0
 
 RIOTEXTRASBASE ?= $(CURDIR)/../..
 
-#USESERVICE += example_service_1
+USESERVICE += example_service_1
 #USESERVICE += pressure_monitor
 
 include $(RIOTEXTRASBASE)/Makefile.include
