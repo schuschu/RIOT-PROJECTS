@@ -92,8 +92,8 @@
 #define UART_0_ISR          isr_usart1
 #define UART_0_BUS_FREQ     (CLOCK_CORECLOCK)
 /* UART 0 pin configuration */
-#define UART_0_RX_PIN       GPIO(PORT_A,10)
-#define UART_0_TX_PIN       GPIO(PORT_A,9)
+#define UART_0_RX_PIN       GPIO_PIN(PORT_A,10)
+#define UART_0_TX_PIN       GPIO_PIN(PORT_A,9)
 
 /* UART 1 device configuration */
 #define UART_1_DEV          USART2
@@ -102,8 +102,8 @@
 #define UART_1_ISR          isr_usart2
 #define UART_1_BUS_FREQ     (CLOCK_CORECLOCK/2)
 /* UART 1 pin configuration */
-#define UART_1_RX_PIN       GPIO(PORT_A,3)
-#define UART_1_TX_PIN       GPIO(PORT_A,2)
+#define UART_1_RX_PIN       GPIO_PIN(PORT_A,3)
+#define UART_1_TX_PIN       GPIO_PIN(PORT_A,2)
 /** @} */
 
 #ifdef __cplusplus
