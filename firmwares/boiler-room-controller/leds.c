@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-#include "periph/gpio.h"
+#include <board.h>
 
 #include "leds.h"
 

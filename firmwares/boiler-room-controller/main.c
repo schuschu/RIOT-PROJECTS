@@ -27,15 +27,15 @@
 #include <dht.h>
 #endif
 
-#include <example_service_1.h>
+//#include <example_service_1.h>
 
 #include "leds.h"
 
 #define DHT_DEV1_PIN        (2)
-#define DHT_DEV1_GPIO       GPIO(PORT_A, DHT_DEV1_PIN)
+#define DHT_DEV1_GPIO       GPIO_PIN(PORT_A, DHT_DEV1_PIN)
 
 #define OWARE_PIN           (3)
-#define OWARE_GPIO          GPIO(PORT_A, OWARE_PIN)
+#define OWARE_GPIO          GPIO_PIN(PORT_A, OWARE_PIN)
 
 
 
@@ -50,8 +50,8 @@ int main(void)
     printf("You are running RIOT on a(n) %s board.\n", RIOT_BOARD);
     printf("This board features a(n) %s MCU.\n", RIOT_MCU);
 
-    example_service_1_routine();
-
+    //example_service_1_routine();
+/*
 #ifdef MODULE_DHT
     dht_t dht_dev1;
     int ret = dht_init(&dht_dev1, DHT21, DHT_DEV1_GPIO);
@@ -63,8 +63,7 @@ int main(void)
     printf("DHT ret: %d; hum: %d; temp: %d\n", ret, (int)h, (int)t);
     printf("DHT hum: %f\n", h);
 #endif
-
-
+*/
 
     return 0;
 }
