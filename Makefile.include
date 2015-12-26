@@ -1,0 +1,24 @@
+# Add services and libraries directories
+DIRS += $(RIOTEXTRASBASE)/services
+#DIRS += $(RIOTEXTRASBASE)/libs
+
+# Export variables used throughout the whole make system
+include $(RIOTEXTRASBASE)/Makefile.vars
+
+# Add modules and services dependences
+include $(RIOTEXTRASBASE)/Makefile.dep
+
+# Add extra include paths for packages in $(USESERVICE) and $(USELIB)
+export USESERVICE_INCLUDES =
+include $(RIOTEXTRASBASE)/services/Makefile.include
+USESERVICE_INCLUDES_ = $(shell echo $(USESERVICE_INCLUDES) | tr ' ' '\n' | awk '!a[$$0]++' | tr '\n' ' ')
+INCLUDES += $(USESERVICE_INCLUDES_:%=-I%)
+
+# Add -D defines to the CFLAGS for packages in $(USESERVICE) and $(USELIB)
+RIOTEXTRAS_ED = $(patsubst %,-DSERVICE_%,$(subst -,_,$(USESERVICE)))
+#RIOTEXTRAS_ED += $(patsubst %,-DSERVICE_%,$(subst -,_,$(USELIB)))
+RIOTEXTRAS_EXTDEFINES = $(shell echo $(sort $(RIOTEXTRAS_ED))|tr 'a-z' 'A-Z')
+CFLAGS += $(RIOTEXTRAS_EXTDEFINES)
+
+# Add $(USESERVICE) and $(USELIB) .a files to final build
+export BASELIBS += $(USESERVICE:%=$(BINDIR)%.a)

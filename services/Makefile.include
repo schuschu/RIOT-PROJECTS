@@ -1,0 +1,6 @@
+ifneq (,$(filter example_service_1,$(USESERVICE)))
+    USESERVICE_INCLUDES += $(RIOTEXTRASBASE)/services/example_service_1/include
+endif
+#ifneq (,$(filter example_service_2,$(USESERVICE)))
+#    USESERVICE_INCLUDES += $(RIOTEXTRASBASE)/services/example_service_2/include
+#endif
