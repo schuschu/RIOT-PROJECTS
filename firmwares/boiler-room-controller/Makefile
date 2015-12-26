@@ -20,8 +20,8 @@ CFLAGS += -DDEVELHELP
 QUIET ?= 0
 
 # Modules to include:
-#USEMODULE += dht
-USEMODULE += xtimer
+USEMODULE += dht
+#USEMODULE += xtimer
 # Use DHT driver with external pullup resistor on data pin
 CFLAGS += -DDHT_EXT_PULLUP
 
