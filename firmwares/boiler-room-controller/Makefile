@@ -20,10 +20,9 @@ CFLAGS += -DDEVELHELP
 QUIET ?= 0
 
 # Modules to include:
-
-USEMODULE += dht
+#USEMODULE += dht
 # Use DHT driver with external pullup resistor on data pin
-CFLAGS += -DDHT_EXT_PULLUP
+#CFLAGS += -DDHT_EXT_PULLUP
 
 # Specify custom includes for your application here ...
 #export INCLUDES += -Iapplication_include
@@ -32,9 +31,9 @@ CFLAGS += -DDHT_EXT_PULLUP
 ################################################################################
 ## RIOT-EXTRAS
 
-RIOTEXTRASBASE ?= $(CURDIR)/../../../RIOT-EXTRAS
+RIOTEXTRASBASE ?= $(CURDIR)/../..
 
-USESERVICE += environment_monitor
+#USESERVICE += example_service_1
 #USESERVICE += pressure_monitor
 
 include $(RIOTEXTRASBASE)/Makefile.include

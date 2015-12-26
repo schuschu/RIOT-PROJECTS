@@ -18,10 +18,10 @@
  * @{
  */
 #define LED_GREEN_PIN       (0)
-#define LED_GREEN_GPIO      GPIO(PORT_A, LED_GREEN_PIN)
+#define LED_GREEN_GPIO      GPIO_PIN(PORT_A, LED_GREEN_PIN)
 
 #define LED_YELLOW_PIN      (1)
-#define LED_YELLOW_GPIO     GPIO(PORT_A, LED_YELLOW_PIN)
+#define LED_YELLOW_GPIO     GPIO_PIN(PORT_A, LED_YELLOW_PIN)
 /** @} */
 
 /**
