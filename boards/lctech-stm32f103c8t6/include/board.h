@@ -46,9 +46,15 @@
 /** @} */
 
 /**
- * @name Assign the hardware timer
+ * @name xtimer configuration
+ * @{
  */
-#define HW_TIMER            TIMER_0
+#define XTIMER              TIMER_0
+#define XTIMER_CHAN         0
+#define XTIMER_SHIFT        0
+#define XTIMER_MASK         0 /* llt 32-bit since combined */
+#define XTIMER_BACKOFF      5
+/** @} */
 
 /**
  * @brief Initialize board specific hardware, including clock, LEDs and std-IO
