@@ -9,7 +9,7 @@ BOARD ?= lctech-stm32f103c8t6
 RIOTBASE  ?= $(CURDIR)/../../../RIOT
 
 # Boards that is not in RIOT tree
-RIOTBOARD ?= $(CURDIR)/../../boards/
+RIOTBOARD ?= $(CURDIR)/../../boards
 
 # Comment this out to disable code in RIOT that does safety checking
 # which is not needed in a production environment but helps in the
@@ -21,8 +21,9 @@ QUIET ?= 0
 
 # Modules to include:
 #USEMODULE += dht
+USEMODULE += xtimer
 # Use DHT driver with external pullup resistor on data pin
-#CFLAGS += -DDHT_EXT_PULLUP
+CFLAGS += -DDHT_EXT_PULLUP
 
 # Specify custom includes for your application here ...
 #export INCLUDES += -Iapplication_include
