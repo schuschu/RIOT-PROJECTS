@@ -58,13 +58,10 @@ int main(void)
 #ifdef SERVICE_EXAMPLE_SERVICE_1
     example_service_1_routine();
 #endif
+
 /*
 #ifdef MODULE_XTIMER
-    uint32_t last_wakeup = xtimer_now();
-    while(1) {
-        xtimer_usleep_until(&last_wakeup, INTERVAL);
-        printf("slept until %"PRIu32"\n", xtimer_now());
-    }
+
 #endif
 */
 
@@ -75,11 +72,18 @@ int main(void)
 
     float h = 0;
     float t = 0;
-    ret = dht_read(&dht_dev1, &h, &t);
-    printf("DHT ret: %d; hum: %d; temp: %d\n", ret, (int)h, (int)t);
-    printf("DHT hum: %f\n", h);
-#endif
 
+    uint32_t last_wakeup = xtimer_now();
+    while(1) {
+        xtimer_usleep_until(&last_wakeup, INTERVAL);
+
+        ret = dht_read(&dht_dev1, &h, &t);
+        printf("DHT ret: %d; hum: %d; temp: %d\n", ret, (int)h, (int)t);
+        printf("DHT hum: %f\n", h);
+
+        //printf("slept until %"PRIu32"\n", xtimer_now());
+    }
+#endif
 
     printf("\n");
 
