@@ -15,6 +15,7 @@
  *
  * @author      Alexander Melnikov <avmelnikoff@gmail.com>
  */
+ 
 #ifndef PERIPH_CONF_H_
 #define PERIPH_CONF_H_
 
