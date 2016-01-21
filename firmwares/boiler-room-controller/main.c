@@ -67,21 +67,25 @@ int main(void)
 
 #ifdef MODULE_DHT
     dht_t dht_dev1;
-    int ret = dht_init(&dht_dev1, DHT21, DHT_DEV1_GPIO);
-    printf("DHT inited: %d\n", ret);
 
-    float h = 0;
-    float t = 0;
+    printf("Initializing DHT sensor at GPIO_%ld... ", (long)DHT_DEV1_GPIO);
+    if (dht_init(&dht_dev1, DHT21, DHT_DEV1_GPIO) == 0) {
+        puts("[OK]\n");
+    }
+    else {
+        puts("[Failed]");
+        return 1;
+    }
 
-    uint32_t last_wakeup = xtimer_now();
+    float h, t;
+
     while(1) {
-        xtimer_usleep_until(&last_wakeup, INTERVAL);
+        if (dht_read(&dht_dev1, &h, &t) == -1) {
+            puts("error reading data");
+        }
 
-        ret = dht_read(&dht_dev1, &h, &t);
-        printf("DHT ret: %d; hum: %d; temp: %d\n", ret, (int)h, (int)t);
-        printf("DHT hum: %f\n", h);
-
-        //printf("slept until %"PRIu32"\n", xtimer_now());
+        printf("DHT: hum: %d; temp: %d\n", (int)h, (int)t);
+        xtimer_usleep(2000 * MS_IN_USEC);
     }
 #endif
 
