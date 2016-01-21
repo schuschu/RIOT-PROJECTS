@@ -16,6 +16,10 @@ RIOTBOARD ?= $(CURDIR)/../../boards
 # development process:
 CFLAGS += -DDEVELHELP
 
+# FIXME: Decide the right place to add definition. I think the proper place is
+# in board descriptions files. See cpu/stm32f1/include/stm32f10x.h file.
+CFLAGS += -DSTM32F10X_MD
+
 # Change this to 0 show compiler invocation lines by default:
 QUIET ?= 0
 
