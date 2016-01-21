@@ -23,6 +23,7 @@
 
 #include <board.h>
 
+#include "periph/adc.h"
 #include "xtimer.h"
 
 #ifdef MODULE_DHT
@@ -49,6 +50,16 @@ int main(void)
     /* initialize the boards LEDs */
     leds_init();
 
+    /* Initialize ADC */
+    printf("Initializing ADC... ");
+    if (adc_init(ADC_0, ADC_RES_12BIT) == 0) {
+        puts("[OK]\n");
+    }
+    else {
+        puts("[Failed]");
+        return 1;
+    }
+
     LED_GREEN_ON;
     LED_YELLOW_ON;
 
@@ -58,12 +69,6 @@ int main(void)
 #ifdef SERVICE_EXAMPLE_SERVICE_1
     example_service_1_routine();
 #endif
-
-/*
-#ifdef MODULE_XTIMER
-
-#endif
-*/
 
 #ifdef MODULE_DHT
     dht_t dht_dev1;
