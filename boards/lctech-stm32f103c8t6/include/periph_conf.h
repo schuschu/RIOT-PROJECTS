@@ -15,7 +15,7 @@
  *
  * @author      Alexander Melnikov <avmelnikoff@gmail.com>
  */
- 
+
 #ifndef PERIPH_CONF_H_
 #define PERIPH_CONF_H_
 
@@ -45,9 +45,9 @@
  * @brief Timer configuration
  * @{
  */
-#define TIMER_NUMOF         (2U)
+#define TIMER_NUMOF         (1U)
 #define TIMER_0_EN          1
-#define TIMER_1_EN          1
+#define TIMER_1_EN          0
 
 /* Timer 0 configuration */
 #define TIMER_0_DEV_0       TIM2
