@@ -107,6 +107,47 @@
 #define UART_1_TX_PIN       GPIO_PIN(PORT_A,2)
 /** @} */
 
+/**
+ * @name ADC configuration
+ * @{
+ */
+#define ADC_NUMOF           (2U)
+#define ADC_0_EN            1
+#define ADC_1_EN            0
+#define ADC_MAX_CHANNELS    2
+
+/* ADC 0 configuration */
+#define ADC_0_DEV           ADC1
+#define ADC_0_CHANNELS      2
+#define ADC_0_CLKEN()       (RCC->APB2ENR |= RCC_APB2ENR_ADC1EN)
+#define ADC_0_CLKDIS()      (RCC->APB2ENR &= ~(RCC_APB2ENR_ADC1EN))
+#define ADC_0_PORT          GPIOA
+//#define ADC_0_PORT_CLKEN()  (RCC->AHBENR |= RCC_AHB1ENR_GPIOAEN)
+/* ADC 0 channel 0 pin config */
+#define ADC_0_CH0           1
+#define ADC_0_CH0_PIN       1
+/* ADC 0 channel 1 pin config */
+#define ADC_0_CH1           4
+#define ADC_0_CH1_PIN       4
+
+/* ADC 1 configuration */
+#if 0
+#define ADC_1_DEV           ADC2
+#define ADC_1_CHANNELS      2
+#define ADC_1_CLKEN()       (RCC->APB2ENR |= RCC_APB2ENR_ADC2EN)
+#define ADC_1_CLKDIS()      (RCC->APB2ENR &= ~(RCC_APB2ENR_ADC2EN))
+
+#define ADC_1_PORT          GPIOC
+#define ADC_1_PORT_CLKEN()  (RCC->AHBENR |= RCC_AHBENR_GPIOCEN)
+/* ADC 1 channel 0 pin config */
+#define ADC_1_CH0           11
+#define ADC_1_CH0_PIN       1
+/* ADC 1 channel 1 pin config */
+#define ADC_1_CH1           12
+#define ADC_1_CH1_PIN       2
+#endif
+/** @} */
+
 #ifdef __cplusplus
 } /* end extern "C" */
 #endif
