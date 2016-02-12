@@ -47,6 +47,9 @@
 
 int main(void)
 {
+    //printf("You are running RIOT on a(n) %s board.\n", RIOT_BOARD);
+    //printf("This board features a(n) %s MCU.\n", RIOT_MCU);
+
     /* initialize the boards LEDs */
     leds_init();
 
@@ -63,9 +66,6 @@ int main(void)
     LED_GREEN_ON;
     LED_YELLOW_ON;
 
-    //printf("You are running RIOT on a(n) %s board.\n", RIOT_BOARD);
-    //printf("This board features a(n) %s MCU.\n", RIOT_MCU);
-
 #ifdef SERVICE_EXAMPLE_SERVICE_1
     example_service_1_routine();
 #endif
@@ -81,18 +81,28 @@ int main(void)
         puts("[Failed]");
         return 1;
     }
+#endif
 
     float h, t;
-
     while(1) {
+        LED_GREEN_ON;
+
+#ifdef MODULE_DHT
         if (dht_read(&dht_dev1, &h, &t) == -1) {
             puts("error reading data");
         }
-
         printf("DHT: hum: %d; temp: %d\n", (int)h, (int)t);
+#endif
+
+        puts("ADC: reading channel...");
+        int v16 = adc_sample(ADC_0, 16);
+        puts("[OK]\n");
+        printf("ADC: ch16: %d;\n", v16);
+
+        LED_GREEN_OFF;
+
         xtimer_usleep(2000 * MS_IN_USEC);
     }
-#endif
 
     printf("\n");
 
