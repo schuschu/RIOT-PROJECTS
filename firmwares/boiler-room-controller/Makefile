@@ -3,7 +3,8 @@ APPLICATION = boiler-room-controller
 
 # If no BOARD is found in the environment, use this default:
 #BOARD ?= native
-BOARD ?= lctech-stm32f103c8t6
+#BOARD ?= lctech-stm32f103c8t6
+BOARD ?= boiler-room-board
 
 # This has to be the absolute path to the RIOT base directory:
 RIOTBASE  ?= $(CURDIR)/../../../RIOT
