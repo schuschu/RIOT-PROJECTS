@@ -149,7 +149,6 @@
 //#define ADC_CH16_EN         1
 //#define ADC_CH17_EN         1
 
-
 /* ADC 1 configuration */
 #if 0
 #define ADC_1_DEV           ADC2
@@ -166,6 +165,35 @@
 #define ADC_1_CH1           12
 #define ADC_1_CH1_PIN       2
 #endif
+/** @} */
+
+/**
+ * @brief SPI configuration
+ * @{
+ */
+#define SPI_NUMOF           (1U)
+#define SPI_0_EN            1
+#define SPI_1_EN            0
+
+/* SPI 0 device configuration */
+#define SPI_0_DEV           SPI1
+#define SPI_0_CLKEN()       (RCC->APB2ENR |= RCC_APB2ENR_SPI1EN)
+#define SPI_0_CLKDIS()      (RCC->APB2ENR &= ~(RCC_APB2ENR_SPI1EN))
+#define SPI_0_BUS_DIV       0   /* 1 -> SPI runs with full CPU clock, 0 -> half CPU clock */
+/* SPI 0 pin configuration */
+#define SPI_0_CLK_PIN       GPIO_PIN(PORT_A,5)
+#define SPI_0_MOSI_PIN      GPIO_PIN(PORT_A,7)
+#define SPI_0_MISO_PIN      GPIO_PIN(PORT_A,6)
+
+/* SPI 1 device configuration */
+#define SPI_1_DEV           SPI2
+#define SPI_1_CLKEN()       (RCC->APB1ENR |= RCC_APB1ENR_SPI2EN)
+#define SPI_1_CLKDIS()      (RCC->APB1ENR &= ~(RCC_APB1ENR_SPI2EN))
+#define SPI_1_BUS_DIV       0   /* 1 -> SPI runs with full CPU clock, 0 -> half CPU clock */
+/* SPI 0 pin configuration */
+#define SPI_1_CLK_PIN       GPIO_PIN(PORT_B,13)
+#define SPI_1_MOSI_PIN      GPIO_PIN(PORT_B,15)
+#define SPI_1_MISO_PIN      GPIO_PIN(PORT_B,14)
 /** @} */
 
 #ifdef __cplusplus
