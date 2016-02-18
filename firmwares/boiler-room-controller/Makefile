@@ -4,7 +4,7 @@ APPLICATION = boiler-room-controller
 # If no BOARD is found in the environment, use this default:
 #BOARD ?= native
 #BOARD ?= lctech-stm32f103c8t6
-BOARD ?= sens-core-v0.1
+BOARD ?= sens-core-v0_1
 
 # This has to be the absolute path to the RIOT base directory:
 RIOTBASE  ?= $(CURDIR)/../../../RIOT
