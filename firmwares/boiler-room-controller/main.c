@@ -36,6 +36,9 @@
 
 #include "leds.h"
 
+#define ADC_TEMP_V25        1.43
+#define ADC_TEMP_AVG_SLOPE  4.3
+
 #define DHT_DEV1_PIN        (2)
 #define DHT_DEV1_GPIO       GPIO_PIN(PORT_A, DHT_DEV1_PIN)
 
@@ -96,8 +99,17 @@ int main(void)
 
         puts("ADC: reading channel...");
         int v16 = adc_sample(ADC_0, 16);
-        puts("[OK]\n");
-        printf("ADC: ch16: %d;\n", v16);
+        if (v16 < 0) {
+            puts("[Failed]\n");
+        }
+        else {
+            puts("[OK]\n");
+
+            float volts = v16 * 3.3 / 4095;
+
+            printf("ADC: ch16: %d;\n", v16);
+            printf("ADC: mV: %d; T: %d;\n", (int)volts, (int)((ADC_TEMP_V25 - volts) / ADC_TEMP_AVG_SLOPE) + 25 );
+        }
 
         LED_GREEN_OFF;
 
