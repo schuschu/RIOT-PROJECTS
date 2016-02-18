@@ -124,19 +124,19 @@
 //#define ADC_PORT            GPIOA
 //#define ADC_0_PORT_CLKEN()  (RCC->AHBENR |= RCC_AHB1ENR_GPIOAEN)
 /* ADC channels pin config */
-#define ADC_0_CH0           1
-#define ADC_0_CH1           1
+//#define ADC_0_CH0           1
+//#define ADC_0_CH1           1
 //#define ADC_0_CH0_PIN       1
 //#define ADC_CH0_PIN         GPIO_PIN(PORT_A,0)
 //#define ADC_CH1_PIN         GPIO_PIN(PORT_A,1)
-#define ADC_CH2_PIN         GPIO_PIN(PORT_A,2)
-#define ADC_CH3_PIN         GPIO_PIN(PORT_A,3)
-#define ADC_CH4_PIN         GPIO_PIN(PORT_A,4)
-#define ADC_CH5_PIN         GPIO_PIN(PORT_A,5)
-#define ADC_CH6_PIN         GPIO_PIN(PORT_A,6)
-#define ADC_CH7_PIN         GPIO_PIN(PORT_A,7)
-#define ADC_CH8_PIN         GPIO_PIN(PORT_B,0)
-#define ADC_CH9_PIN         GPIO_PIN(PORT_B,1)
+//#define ADC_CH2_PIN         GPIO_PIN(PORT_A,2)
+//#define ADC_CH3_PIN         GPIO_PIN(PORT_A,3)
+//#define ADC_CH4_PIN         GPIO_PIN(PORT_A,4)
+//#define ADC_CH5_PIN         GPIO_PIN(PORT_A,5)
+//#define ADC_CH6_PIN         GPIO_PIN(PORT_A,6)
+//#define ADC_CH7_PIN         GPIO_PIN(PORT_A,7)
+//#define ADC_CH8_PIN         GPIO_PIN(PORT_B,0)
+//#define ADC_CH9_PIN         GPIO_PIN(PORT_B,1)
 
 //#define ADC_CH10_PIN        GPIO_PIN(PORT_C,0)
 //#define ADC_CH11_PIN        GPIO_PIN(PORT_C,1)
