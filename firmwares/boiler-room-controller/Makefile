@@ -37,12 +37,12 @@ CFLAGS += -DDHT_EXT_PULLUP
 ################################################################################
 ## RIOT-EXTRAS
 
-RIOTEXTRASBASE ?= $(CURDIR)/../..
+X_RIOTBASE ?= $(CURDIR)/../..
 
-USESERVICE += example_service_1
-#USESERVICE += pressure_monitor
+X_USEMODULE += example_service_1
+#X_USEMODULE += pressure_monitor
 
-include $(RIOTEXTRASBASE)/Makefile.include
+include $(X_RIOTBASE)/Makefile.include
 ################################################################################
 
 
