@@ -57,6 +57,38 @@
 /** @} */
 
 /**
+ * @name LED pin definitions
+ * @{
+ */
+#define LED_GREEN_GPIO      GPIO_PIN(PORT_A,0)
+#define LED_YELLOW_GPIO     GPIO_PIN(PORT_A,1)
+/** @} */
+
+/**
+ * @name Macros for controlling the on-board LEDs.
+ * @{
+ */
+#define LED_GREEN_ON        gpio_clear(LED_GREEN_GPIO)
+#define LED_GREEN_OFF       gpio_set(LED_GREEN_GPIO)
+#define LED_GREEN_TOGGLE    gpio_toggle(LED_GREEN_GPIO)
+
+#define LED_YELLOW_ON       gpio_clear(LED_YELLOW_GPIO)
+#define LED_YELLOW_OFF      gpio_set(LED_YELLOW_GPIO)
+#define LED_YELLOW_TOGGLE   gpio_toggle(LED_YELLOW_GPIO)
+/** @} */
+
+/**
+ * @name ENC28J60 pin configuration
+ * @{
+ */
+#define ENC28J60_PARAM_SPI    SPI_0
+#define ENC28J60_PARAM_CS     GPIO_PIN(PORT_B,0)
+#define ENC28J60_PARAM_INT    GPIO_PIN(PORT_B,2)
+#define ENC28J60_PARAM_RESET  GPIO_PIN(PORT_B,1)
+/** @} */
+
+
+/**
  * @brief Initialize board specific hardware, including clock, LEDs and std-IO
  */
 void board_init(void);
