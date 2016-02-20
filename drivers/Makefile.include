@@ -1,0 +1,6 @@
+#ifneq (,$(filter example_service_1,$(X_USEMODULE)))
+#    X_USEMODULE_INCLUDES += $(X_RIOTBASE)/drivers/example_driver_1/include
+#endif
+#ifneq (,$(filter example_service_2,$(X_USEMODULE)))
+#    X_USEMODULE_INCLUDES += $(X_RIOTBASE)/drivers/example_driver_2/include
+#endif

@@ -29,12 +29,12 @@ QUIET ?= 0
 ################################################################################
 ## RIOT-EXTRAS
 
-RIOTEXTRASBASE ?= $(CURDIR)/../..
+X_RIOTBASE ?= $(CURDIR)/../..
 
-USESERVICE += example_service_1
-#USESERVICE += example_service_2
+X_USEMODULE += example_service_1
+#X_USEMODULE += example_service_2
 
-include $(RIOTEXTRASBASE)/Makefile.include
+include $(X_RIOTBASE)/Makefile.include
 ################################################################################
 
 
