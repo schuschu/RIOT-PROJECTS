@@ -23,16 +23,16 @@
 
 #include <board.h>
 
-#include "periph/adc.h"
-#include "periph/spi.h"
-#include "xtimer.h"
+#include <periph/adc.h>
+#include <periph/spi.h>
+#include <xtimer.h>
 
 #ifdef MODULE_DHT
 #include <dht.h>
 #endif
 
 #ifdef SERVICE_EXAMPLE_SERVICE_1
-#include <example_service_1.h>
+ #include <example_service_1.h>
 #endif
 
 #include "leds.h"
