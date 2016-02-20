@@ -46,11 +46,6 @@
 #define OWARE_PIN           (3)
 #define OWARE_GPIO          GPIO_PIN(PORT_A, OWARE_PIN)
 
-#define ETH_CS_PIN          (0)
-#define ETH_CS_GPIO         GPIO_PIN(PORT_B, ETH_CS_PIN)
-
-#define ETH_RST_PIN         (1)
-#define ETH_RST_GPIO        GPIO_PIN(PORT_B, ETH_RST_PIN)
 
 /* set interval to 1 second */
 #define INTERVAL (1000000U)
