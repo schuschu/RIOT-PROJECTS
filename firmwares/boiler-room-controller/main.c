@@ -21,18 +21,24 @@
 
 #include <stdio.h>
 
-#include <board.h>
+#include "board.h"
 
-#include <periph/adc.h>
-#include <periph/spi.h>
-#include <xtimer.h>
+#include "periph/cpuid.h"
+#include "periph/adc.h"
+#include "periph/spi.h"
+
+#include "net/ipv6/addr.h"
+#include "net/gnrc/netif.h"
+#include "net/gnrc/ipv6/netif.h"
+
+#include "xtimer.h"
 
 #ifdef MODULE_DHT
-#include <dht.h>
+#include "dht.h"
 #endif
 
 #ifdef SERVICE_EXAMPLE_SERVICE_1
- #include <example_service_1.h>
+ #include "example_service_1.h"
 #endif
 
 #include "leds.h"
@@ -89,9 +95,33 @@ int main(void)
     example_service_1_routine();
 #endif
 
+    /* CPUID */
+    uint8_t cpuidbuf[CPUID_ID_LEN];
+    cpuid_get(&cpuidbuf);
+    printf("cpuid: ");
+    for (uint8_t i = 0; i < sizeof (cpuidbuf); i++) {
+        printf("0x%02x ", cpuidbuf[i]);
+    }
+    puts("");
 
+    /* get the first IPv6 interface and prints its address */
+/*
+    kernel_pid_t ifs[GNRC_NETIF_NUMOF];
+    size_t numof = gnrc_netif_get(ifs);
+    if (numof > 0) {
+        gnrc_ipv6_netif_t *entry = gnrc_ipv6_netif_get(ifs[0]);
+        for (int i = 0; i < GNRC_IPV6_NETIF_ADDR_NUMOF; i++) {
+            if ((ipv6_addr_is_link_local(&entry->addrs[i].addr)) && !(entry->addrs[i].flags & GNRC_IPV6_NETIF_ADDR_FLAGS_NON_UNICAST)) {
+                char ipv6_addr[IPV6_ADDR_MAX_STR_LEN];
+                ipv6_addr_to_str(ipv6_addr, &entry->addrs[i].addr, IPV6_ADDR_MAX_STR_LEN);
+                printf("My address is %s\n", ipv6_addr);
+            }
+        }
+    }
+*/
+    /* Main loop */
     float h, t;
-    while(1) {
+    while (1) {
         LED_GREEN_ON;
 
 #ifdef MODULE_DHT

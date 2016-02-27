@@ -26,6 +26,15 @@ QUIET ?= 0
 
 # Modules to include:
 #USEMODULE += xtimer
+
+ USEMODULE += enc28j60
+USEMODULE += gnrc_netdev2
+ USEMODULE += gnrc_netif_default
+USEMODULE += auto_init_gnrc_netif
+ USEMODULE += gnrc_ipv6
+#USEMODULE += gnrc_ndp
+ USEMODULE += gnrc_icmpv6_echo
+
 USEMODULE += dht
 # Use DHT driver with external pullup resistor on data pin
 CFLAGS += -DDHT_EXT_PULLUP
