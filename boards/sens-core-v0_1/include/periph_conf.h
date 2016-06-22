@@ -19,6 +19,8 @@
 #ifndef PERIPH_CONF_H_
 #define PERIPH_CONF_H_
 
+#include "periph_cpu.h"
+
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -31,140 +33,76 @@
 #define CLOCK_CORECLOCK     (72000000U)             /* targeted core clock frequency */
 /* configuration of PLL prescaler and multiply values */
 /* CORECLOCK := HSE / PLL_HSE_DIV * PLL_HSE_MUL */
-#define CLOCK_PLL_HSE_DIV   RCC_CFGR_PLLXTPRE_HSE
-#define CLOCK_PLL_HSE_MUL   RCC_CFGR_PLLMULL9
+#define CLOCK_PLL_DIV       (1) /*RCC_CFGR_PLLXTPRE_HSE*/
+#define CLOCK_PLL_MUL       (9) /*RCC_CFGR_PLLMULL9*/
 /* configuration of peripheral bus clock prescalers */
 #define CLOCK_AHB_DIV       RCC_CFGR_HPRE_DIV1      /* AHB clock -> 72MHz */
 #define CLOCK_APB2_DIV      RCC_CFGR_PPRE2_DIV1     /* APB2 clock -> 72MHz */
 #define CLOCK_APB1_DIV      RCC_CFGR_PPRE1_DIV2     /* APB1 clock -> 36MHz */
+/* resulting bus clocks */
+#define CLOCK_APB1          (CLOCK_CORECLOCK / 2)
+#define CLOCK_APB2          (CLOCK_CORECLOCK)
 /* configuration of flash access cycles */
 #define CLOCK_FLASH_LATENCY FLASH_ACR_LATENCY_2
 /** @} */
 
 /**
- * @brief Timer configuration
+ * @brief   DAC configuration
  * @{
  */
-#define TIMER_NUMOF         (1U)
-#define TIMER_0_EN          1
-#define TIMER_1_EN          0
-
-/* Timer 0 configuration */
-#define TIMER_0_DEV_0       TIM2
-#define TIMER_0_DEV_1       TIM3
-//#define TIMER_0_CHANNELS    4
-#define TIMER_0_PRESCALER   (72U)
-#define TIMER_0_MAX_VALUE   (0xffff)
-#define TIMER_0_CLKEN()     (RCC->APB1ENR |= (RCC_APB1ENR_TIM2EN | RCC_APB1ENR_TIM3EN))
-#define TIMER_0_ISR_0       isr_tim2
-#define TIMER_0_ISR_1       isr_tim3
-#define TIMER_0_IRQ_CHAN_0  TIM2_IRQn
-#define TIMER_0_IRQ_CHAN_1  TIM3_IRQn
-#define TIMER_0_IRQ_PRIO    1
-#define TIMER_0_TRIG_SEL    TIM_SMCR_TS_0
-
-/* Timer 1 configuration */
-#define TIMER_1_DEV_0       TIM4
-#define TIMER_1_DEV_1       TIM5
-//#define TIMER_1_CHANNELS    4
-#define TIMER_1_PRESCALER   (36000U)
-#define TIMER_1_MAX_VALUE   (0xffff)
-#define TIMER_1_CLKEN()     (RCC->APB1ENR |= (RCC_APB1ENR_TIM4EN | RCC_APB1ENR_TIM5EN))
-#define TIMER_1_ISR_0       isr_tim4
-#define TIMER_1_ISR_1       isr_tim5
-#define TIMER_1_IRQ_CHAN_0  TIM4_IRQn
-#define TIMER_1_IRQ_CHAN_1  TIM5_IRQn
-#define TIMER_1_IRQ_PRIO    1
-#define TIMER_1_TRIG_SEL    TIM_SMCR_TS_1
-/** @} */
-
-/**
- * @brief UART configuration
- */
-#define UART_NUMOF          (1U)
-#define UART_0_EN           1
-#define UART_1_EN           0
-#define UART_IRQ_PRIO       1
-
-/* UART 0 device configuration */
-#define UART_0_DEV          USART1
-#define UART_0_CLKEN()      (RCC->APB2ENR |= RCC_APB2ENR_USART1EN)
-#define UART_0_IRQ          USART1_IRQn
-#define UART_0_ISR          isr_usart1
-#define UART_0_BUS_FREQ     (CLOCK_CORECLOCK)
-/* UART 0 pin configuration */
-#define UART_0_RX_PIN       GPIO_PIN(PORT_A,10)
-#define UART_0_TX_PIN       GPIO_PIN(PORT_A,9)
-
-/* UART 1 device configuration */
-#define UART_1_DEV          USART2
-#define UART_1_CLKEN()      (RCC->APB1ENR |= RCC_APB1ENR_USART2EN)
-#define UART_1_IRQ          USART2_IRQn
-#define UART_1_ISR          isr_usart2
-#define UART_1_BUS_FREQ     (CLOCK_CORECLOCK/2)
-/* UART 1 pin configuration */
-#define UART_1_RX_PIN       GPIO_PIN(PORT_A,3)
-#define UART_1_TX_PIN       GPIO_PIN(PORT_A,2)
+#define DAC_NUMOF           (0)
 /** @} */
 
 /**
  * @name ADC configuration
  * @{
  */
-#define ADC_NUMOF           (2U)
-#define ADC_0_EN            1
-#define ADC_1_EN            0
-//#define ADC_MAX_CHANNELS    2
+#define ADC_NUMOF           (0)
+/** @} */
 
-/* ADC 0 configuration */
-#define ADC_0_DEV           ADC1
-//#define ADC_0_CHANNELS      2
-#define ADC_0_CLKEN()       (RCC->APB2ENR |= RCC_APB2ENR_ADC1EN)
-#define ADC_0_CLKDIS()      (RCC->APB2ENR &= ~(RCC_APB2ENR_ADC1EN))
-//#define ADC_PORT            GPIOA
-//#define ADC_0_PORT_CLKEN()  (RCC->AHBENR |= RCC_AHB1ENR_GPIOAEN)
-/* ADC channels pin config */
-//#define ADC_0_CH0           1
-//#define ADC_0_CH1           1
-//#define ADC_0_CH0_PIN       1
-//#define ADC_CH0_PIN         GPIO_PIN(PORT_A,0)
-//#define ADC_CH1_PIN         GPIO_PIN(PORT_A,1)
-//#define ADC_CH2_PIN         GPIO_PIN(PORT_A,2)
-//#define ADC_CH3_PIN         GPIO_PIN(PORT_A,3)
-//#define ADC_CH4_PIN         GPIO_PIN(PORT_A,4)
-//#define ADC_CH5_PIN         GPIO_PIN(PORT_A,5)
-//#define ADC_CH6_PIN         GPIO_PIN(PORT_A,6)
-//#define ADC_CH7_PIN         GPIO_PIN(PORT_A,7)
-//#define ADC_CH8_PIN         GPIO_PIN(PORT_B,0)
-//#define ADC_CH9_PIN         GPIO_PIN(PORT_B,1)
+/**
+ * @brief   Timer configuration
+ * @{
+ */
+static const timer_conf_t timer_config[] = {
+    {
+        .dev      = TIM2,
+        .rcc_mask = RCC_APB1ENR_TIM2EN,
+        .bus      = APB1,
+        .irqn     = TIM2_IRQn
+    },
+    {
+        .dev      = TIM3,
+        .rcc_mask = RCC_APB1ENR_TIM3EN,
+        .bus      = APB1,
+        .irqn     = TIM3_IRQn
+    }
+};
 
-//#define ADC_CH10_PIN        GPIO_PIN(PORT_C,0)
-//#define ADC_CH11_PIN        GPIO_PIN(PORT_C,1)
-//#define ADC_CH12_PIN        GPIO_PIN(PORT_C,2)
-//#define ADC_CH13_PIN        GPIO_PIN(PORT_C,3)
-//#define ADC_CH14_PIN        GPIO_PIN(PORT_C,4)
-//#define ADC_CH15_PIN        GPIO_PIN(PORT_C,5)
+#define TIMER_0_ISR         isr_tim2
+#define TIMER_1_ISR         isr_tim3
 
-/* ADC enable internal channels */
-//#define ADC_CH16_EN         1
-//#define ADC_CH17_EN         1
+#define TIMER_NUMOF         (sizeof(timer_config) / sizeof(timer_config[0]))
+/** @} */
 
-/* ADC 1 configuration */
-#if 0
-#define ADC_1_DEV           ADC2
-#define ADC_1_CHANNELS      2
-#define ADC_1_CLKEN()       (RCC->APB2ENR |= RCC_APB2ENR_ADC2EN)
-#define ADC_1_CLKDIS()      (RCC->APB2ENR &= ~(RCC_APB2ENR_ADC2EN))
+/**
+ * @brief UART configuration
+ * @{
+ */
+static const uart_conf_t uart_config[] = {
+    {
+        .dev     = USART2,
+        .rx_pin  = GPIO_PIN(PORT_A, 3),
+        .tx_pin  = GPIO_PIN(PORT_A, 2),
+        .rcc_pin = RCC_APB1ENR_USART2EN,
+        .bus     = APB1,
+        .irqn    = USART2_IRQn
+    }
+};
 
-#define ADC_1_PORT          GPIOC
-#define ADC_1_PORT_CLKEN()  (RCC->AHBENR |= RCC_AHBENR_GPIOCEN)
-/* ADC 1 channel 0 pin config */
-#define ADC_1_CH0           11
-#define ADC_1_CH0_PIN       1
-/* ADC 1 channel 1 pin config */
-#define ADC_1_CH1           12
-#define ADC_1_CH1_PIN       2
-#endif
+#define UART_0_ISR          isr_usart2
+
+#define UART_NUMOF          (sizeof(uart_config) / sizeof(uart_config[0]))
 /** @} */
 
 /**

@@ -24,7 +24,7 @@
 #include <stdint.h>
 
 #include "cpu.h"
-#include "periph/gpio.h"
+//#include "periph/gpio.h"
 #include "periph_conf.h"
 
 #ifdef __cplusplus
@@ -34,26 +34,31 @@
 /**
  * @name Define the nominal CPU core clock in this board
  */
-#define F_CPU               CLOCK_CORECLOCK
+//#define F_CPU               CLOCK_CORECLOCK
+
+/**
+ * @brief Use the 2nd UART for STDIO on this board
+ */
+#define UART_STDIO_DEV      UART_DEV(1)
 
 /**
  * @name Define the UART to be used as stdio and its baudrate
  * @{
  */
-#define STDIO               UART_0
-#define STDIO_BAUDRATE      (115200)
-#define STDIO_RX_BUFSIZE    (64U)
+//#define STDIO               UART_0
+//#define STDIO_BAUDRATE      (115200)
+//#define STDIO_RX_BUFSIZE    (64U)
 /** @} */
 
 /**
  * @name xtimer configuration
  * @{
  */
-#define XTIMER              TIMER_0
-#define XTIMER_CHAN         0
-#define XTIMER_SHIFT        0
-#define XTIMER_MASK         0 /* llt 32-bit since combined */
-#define XTIMER_BACKOFF      5
+//#define XTIMER              TIMER_0
+//#define XTIMER_CHAN         0
+//#define XTIMER_SHIFT        0
+#define XTIMER_MASK         (0xffff0000) //0 /* llt 32-bit since combined */
+//#define XTIMER_BACKOFF      5
 /** @} */
 
 /**
@@ -68,6 +73,7 @@
  * @name Macros for controlling the on-board LEDs.
  * @{
  */
+/*
 #define LED_GREEN_ON        gpio_clear(LED_GREEN_GPIO)
 #define LED_GREEN_OFF       gpio_set(LED_GREEN_GPIO)
 #define LED_GREEN_TOGGLE    gpio_toggle(LED_GREEN_GPIO)
@@ -75,6 +81,7 @@
 #define LED_YELLOW_ON       gpio_clear(LED_YELLOW_GPIO)
 #define LED_YELLOW_OFF      gpio_set(LED_YELLOW_GPIO)
 #define LED_YELLOW_TOGGLE   gpio_toggle(LED_YELLOW_GPIO)
+*/
 /** @} */
 
 /**

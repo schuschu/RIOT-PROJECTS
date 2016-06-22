@@ -1,6 +1,7 @@
 ## the cpu to build for
 export CPU = stm32f1
-export CPU_MODEL = stm32f103c8
+#export CPU_MODEL = stm32f103c8
+export CPU_MODEL = stm32f103cb
 
 # set the default port
 export PORT ?= /dev/ttyUSB0
@@ -12,4 +13,4 @@ include $(RIOTBOARD)/Makefile.include.serial
 include $(RIOTBOARD)/Makefile.include.openocd
 
 # include cortex-m defaults
-include $(RIOTBOARD)/Makefile.include.cortexm_common
+#include $(RIOTBOARD)/Makefile.include.cortexm_common
