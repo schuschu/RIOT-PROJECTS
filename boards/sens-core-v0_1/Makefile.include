@@ -1,7 +1,6 @@
 ## the cpu to build for
 export CPU = stm32f1
-#export CPU_MODEL = stm32f103c8
-export CPU_MODEL = stm32f103cb
+export CPU_MODEL = stm32f103c8
 
 # set the default port
 export PORT ?= /dev/ttyUSB0
