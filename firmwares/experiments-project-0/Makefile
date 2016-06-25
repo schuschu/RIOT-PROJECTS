@@ -9,7 +9,7 @@ BOARD ?= native
 RIOTBASE  ?= $(CURDIR)/../../../RIOT
 
 # Boards that is not in RIOT tree
-#RIOTBOARD ?= $(CURDIR)/../../boards/
+RIOTBOARD ?= $(CURDIR)/../../boards/
 
 # Comment this out to disable code in RIOT that does safety checking
 # which is not needed in a production environment but helps in the
@@ -21,6 +21,9 @@ QUIET ?= 0
 
 # Modules to include:
 #USEMODULE += XXX
+
+USEMODULE += dht
+USEMODULE += xtimer
 
 # Specify custom includes for your application here ...
 #export INCLUDES += -Iapplication_include
