@@ -18,6 +18,18 @@
  * @}
  */
 
+/*
+
+nRF24
+IRQ - PA2
+CE  - PA3
+CSN - PA4
+SCK - PA5
+MI  - PA6
+MO  - PA7
+
+ */
+
 #include <stdio.h>
 
 #include <periph/gpio.h>
