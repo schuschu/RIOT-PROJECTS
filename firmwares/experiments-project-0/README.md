@@ -19,3 +19,11 @@ This example should foremost give you an overview how to use the Makefile system
 * The last line of your Makefile must be `include $(RIOTBASE)/Makefile.include`.
 
 The code itself may look like your usual *C* beginners hello-world example.
+
+
+Settings 1:
+RIOTBOARD ?= $(CURDIR)/../../boards/
+BOARD=sens-core-v0_1
+OPENOCD_INTERFACE_CONFIG=stlink-v2.cfg
+
+make OPENOCD_INTERFACE_CONFIG=stlink-v2.cfg BOARD=sens-core-v0_1 
