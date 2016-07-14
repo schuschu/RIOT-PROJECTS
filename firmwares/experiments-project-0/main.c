@@ -42,14 +42,17 @@ MO  - PA7
 
 #include <example_service_1.h>
 
+#define LED_RED_GPIO     GPIO_PIN(PORT_C,13)
+
 extern dht_t dht_devs[];
 
 int main(void)
 {
-  gpio_init(LED_GREEN_GPIO, GPIO_OUT);
-  gpio_init(LED_YELLOW_GPIO, GPIO_OUT);
+  //gpio_init(LED_GREEN_GPIO, GPIO_OUT);
+  //gpio_init(LED_YELLOW_GPIO, GPIO_OUT);
 
-  gpio_set(LED_GREEN_GPIO);
+  gpio_init(LED_RED_GPIO, GPIO_OUT);
+  gpio_clear(LED_RED_GPIO);
 
   puts("Hello World!");
 
@@ -58,11 +61,21 @@ int main(void)
 
   example_service_1_routine();
 
-
   puts("DHT temperature and humidity sensor test application\n");
 
   /* periodically read temp and humidity values */
+  uint32_t now;
   while (1) {
+    gpio_toggle(LED_RED_GPIO);
+
+    puts("loop 0");
+
+    now = xtimer_now();
+
+    puts("loop 1");
+
+    now++;
+#if 0
       for (unsigned i = 0; i < DHT_NUMOF; i++) {
           dht_t *dev = &dht_devs[i];
           int16_t temp, hum;
@@ -84,9 +97,12 @@ int main(void)
           printf("DHT device #%i - ", i);
           printf("temp: %i.%i°C, ", int_temp, dec_temp);
           printf("relative humidity: %i.%i%%\n", int_hum, dec_hum);
-
-          xtimer_usleep(2000 * MS_IN_USEC);
       }
+#endif
+      //xtimer_usleep(2000 * MS_IN_USEC);
+      xtimer_usleep(200);
+
+      puts("loop 2");
   }
 
   return 0;

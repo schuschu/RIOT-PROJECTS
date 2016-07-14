@@ -58,7 +58,7 @@
 //#define XTIMER_CHAN         0
 //#define XTIMER_SHIFT        0
 #define XTIMER_MASK         (0xffff0000) //0 /* llt 32-bit since combined */
-//#define XTIMER_BACKOFF      5
+#define XTIMER_BACKOFF      5
 /** @} */
 
 /**

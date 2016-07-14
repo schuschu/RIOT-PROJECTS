@@ -31,18 +31,23 @@
  **/
 #define CLOCK_HSE           (8000000U)              /* frequency of external oscillator */
 #define CLOCK_CORECLOCK     (72000000U)             /* targeted core clock frequency */
+
 /* configuration of PLL prescaler and multiply values */
-/* CORECLOCK := HSE / PLL_HSE_DIV * PLL_HSE_MUL */
+/* the actual PLL values are automatically generated */
 #define CLOCK_PLL_DIV       (1) /*RCC_CFGR_PLLXTPRE_HSE*/
 #define CLOCK_PLL_MUL       (9) /*RCC_CFGR_PLLMULL9*/
+
 /* configuration of peripheral bus clock prescalers */
+/* AHB, APB1, APB2 dividers */
 #define CLOCK_AHB_DIV       RCC_CFGR_HPRE_DIV1      /* AHB clock -> 72MHz */
 #define CLOCK_APB2_DIV      RCC_CFGR_PPRE2_DIV1     /* APB2 clock -> 72MHz */
-#define CLOCK_APB1_DIV      RCC_CFGR_PPRE1_DIV2     /* APB1 clock -> 36MHz */
+#define CLOCK_APB1_DIV      RCC_CFGR_PPRE1_DIV2     /* APB1 clock -> 36MHz (max?) */
+
 /* resulting bus clocks */
 #define CLOCK_APB1          (CLOCK_CORECLOCK / 2)
 #define CLOCK_APB2          (CLOCK_CORECLOCK)
-/* configuration of flash access cycles */
+
+/* configuration of flash access cycles (flash latency) */
 #define CLOCK_FLASH_LATENCY FLASH_ACR_LATENCY_2
 /** @} */
 
